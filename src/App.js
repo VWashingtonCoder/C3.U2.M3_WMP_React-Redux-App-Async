@@ -7,10 +7,15 @@ import { useEffect } from 'react';
 function App(props) {
   console.log(props)
   const { getNewActivity, activity } = props
+  
   useEffect(()=>{
     getNewActivity()
   }, [])
 
+  const onClick = evt => {
+    evt.preventDefault()
+    getNewActivity()
+  }
   return (
     <div className="App">
       <h1>Random Activity Generator</h1>
@@ -26,7 +31,7 @@ function App(props) {
         <div className='type'>Type:</div>
         {activity.type}
       </div>
-      <button>Get New Activity</button>
+      <button onClick={onClick}>Get New Activity</button>
     </div>
   );
 }
